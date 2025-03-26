@@ -6,10 +6,79 @@
     <title>Blog</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    @yield('styles') <!-- Add this to include custom styles -->
+    <style>
+        body {
+            background-color: #d3d3d3 !important; /* Light gray background */
+            color: #333333 !important; /* Dark gray text for better contrast */
+        }
+        .card {
+            border: 2px solid black !important;
+            background-color: #ffffff !important; /* Default white background for cards */
+            color:rgb(255, 255, 255) !important; /* Fixed: Dark gray text inside cards */
+        }
+        .card-body {
+            color:rgb(255, 255, 255) !important; /* Ensure card body text is dark gray */
+        }
+        .navbar {
+            background-color: black !important;
+        }
+        .navbar-text {
+            color: white !important;
+        }
+        /* Vertically center all navbar elements */
+        .navbar .navbar-brand,
+        .navbar .navbar-text,
+        .navbar .btn {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        /* Ensure the navbar-nav aligns its children properly */
+        .navbar-nav {
+            display: flex;
+            align-items: center;
+        }
+        /* Adjust the form to align with the text */
+        .navbar-nav form {
+            display: inline-flex;
+            align-items: center;
+        }
+        /* Adjust text colors for better contrast */
+        h1, h3, h5, p, small, strong {
+            color: #333333 !important; /* Dark gray text for headings and paragraphs */
+        }
+        .form-select {
+            background-color: #ffffff !important; /* White background for dropdowns */
+            color: #333333 !important; /* Dark gray text */
+            border-color: #cccccc !important; /* Light gray border */
+        }
+        .list-group-item {
+            background-color: #ffffff !important; /* Default white background for comments */
+            color: #333333 !important; /* Dark gray text */
+            border-color: #cccccc !important; /* Light gray border */
+        }
+        /* Adjust pagination links */
+        .pagination .page-link {
+            background-color: #ffffff !important;
+            color: #333333 !important;
+            border-color: #cccccc !important;
+        }
+        .pagination .page-item.active .page-link {
+            background-color: #cccccc !important;
+            color: #333333 !important;
+        }
+        /* Adjust alerts for better contrast */
+        .alert-success {
+            color: #155724 !important; /* Dark green text for success alert */
+        }
+        .alert-danger {
+            color: #721c24 !important; /* Dark red text for error alert */
+        }
+    </style>
+    @yield('styles')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="{{ route('blog.index') }}">Blog</a>
             <div class="navbar-nav ms-auto">
@@ -21,13 +90,13 @@
                         @else
                             {{ session('user') }}
                         @endif
+                        
                     </span>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="btn btn-outline-danger">Logout</button>
                     </form>
                 @else
-                    <!-- <a href="{{ route('login') }}" class="btn btn-outline-primary me-2">Login</a> -->
                     <a href="{{ route('register') }}" class="btn btn-outline-secondary">Register</a>
                 @endif
             </div>

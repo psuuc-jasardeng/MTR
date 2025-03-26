@@ -21,6 +21,7 @@
                             <input type="password" name="password" id="password" class="form-control" required>
                         </div>
                         <button type="submit" class="btn btn-primary">Register</button>
+                        <a href="{{ route('login') }}" class="btn btn-outline-secondary">Cancel</a>
                     </form>
                 </div>
             </div>
